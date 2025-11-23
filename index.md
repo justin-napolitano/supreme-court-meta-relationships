@@ -1,119 +1,51 @@
-+++
-title =  "Postgres to Neo4j Workflow: Relationships"
-description = "Streamlining Data Transfer from PostgreSQL to Neo4j with Java... With Relationships Between Nodes"
-tags = ['python', "neo4j","databases"]
-images = ["images/feature-image.png"]
-date = "2024-08-06T16:10:02-05:00"
-categories = ["projects"]
-series = ["Java"]
-+++
+---
+slug: "github-supreme-court-meta-relationships"
+title: "supreme-court-meta-relationships"
+repo: "justin-napolitano/supreme-court-meta-relationships"
+githubUrl: "https://github.com/justin-napolitano/supreme-court-meta-relationships"
+generatedAt: "2025-11-23T09:42:06.710583Z"
+source: "github-auto"
+---
 
 
-# Updating the PostGres to Neo workflow with Standard Meta Data Relationships
+# Postgres to Neo4j Workflow: Relationships
 
-In my previous post i detailed how to export data from postgresql to neo4j with a java workflow.. but I did not add how add relationships once the node insert completes. 
+This project addresses the challenge of establishing meaningful relationships between nodes in a Neo4j graph database after data migration from PostgreSQL. While the initial data export populates nodes, the relationships that define the graph's structure require explicit creation.
 
+## Motivation
 
-Here is the repo btw ```https://github.com/justin-napolitano/supreme-court-transfer```
+Graph databases like Neo4j depend heavily on relationships to provide context and enable complex queries. When transferring data from relational databases such as PostgreSQL, it is common to export tables as nodes but omit or delay relationship creation. This project fills that gap by programmatically creating relationships based on metadata.
 
-## RelationshipCreator.java 
+## Problem Statement
 
-```java
+The previous workflow exported data from PostgreSQL to Neo4j nodes using Java but lacked automated creation of relationships between those nodes. Without relationships, the graph's utility is limited, reducing the ability to analyze connections and patterns.
 
-package com.supreme_court_transfer;
+## Solution Overview
 
-import org.neo4j.driver.Session;
-import org.neo4j.driver.Transaction;
-import org.neo4j.driver.TransactionWork;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+The `RelationshipCreator` Java class encapsulates the logic to create relationships between various node types, such as CallNumber, Resource, Contributor, and Subject, to Item nodes. It uses the Neo4j Java Driver to open a session and execute write transactions for relationship creation.
 
-public class RelationshipCreator {
-    private static final Logger logger = LoggerFactory.getLogger(RelationshipCreator.class);
+## Implementation Details
 
-    public static void createRelationships() {
-        logger.info("Starting relationship creation process...");
+- **Neo4j Session Management:** The class obtains a session through a `Neo4jConnection` utility (assumed to handle driver lifecycle and configuration).
 
-        try (Session session = Neo4jConnection.getSession()) {
-            // Relationship creation methods
-            createCallNumberToItemRelationships(session);
-            createResourceToItemRelationships(session);
-            createContributorToItemRelationships(session);
-            createSubjectToItemRelationships(session);
+- **Transaction Work:** Each relationship type has a dedicated method that executes Cypher queries within a transaction, ensuring atomicity.
 
-            // Add more relationship creation methods as needed
-        } catch (Exception e) {
-            logger.error("An error occurred during the relationship creation process.", e);
-        }
+- **Logging:** SLF4J is used for logging the start, completion, and any errors during the relationship creation process, aiding in debugging and monitoring.
 
-        logger.info("Relationship creation process completed.");
-    }
+- **Extensibility:** The design allows adding more relationship creation methods as needed, supporting scalability.
 
-    private static void createCallNumberToItemRelationships(Session session) {
-        session.writeTransaction(new TransactionWork<Void>() {
-            @Override
-            public Void execute(Transaction tx) {
-                tx.run("MATCH (c:CallNumber), (i:Item) " +
-                       "WHERE c.externalId = i.callNumber " +
-                       "CREATE (c)-[:ASSOCIATED_WITH]->(i)");
-                logger.info("Created relationships between CallNumbers and Items based on external_id.");
-                return null;
-            }
-        });
-    }
+## Practical Considerations
 
-    private static void createResourceToItemRelationships(Session session) {
-        session.writeTransaction(new TransactionWork<Void>() {
-            @Override
-            public Void execute(Transaction tx) {
-                tx.run("MATCH (r:Resource), (i:Item) " +
-                       "WHERE r.externalId = i.externalId " +
-                       "CREATE (r)-[:RESOURCE_OF]->(i)");
-                logger.info("Created relationships between Resources and Items based on external_id.");
-                return null;
-            }
-        });
-    }
+- The Neo4j connection details must be correctly configured before running the workflow.
 
-    private static void createContributorToItemRelationships(Session session) {
-        session.writeTransaction(new TransactionWork<Void>() {
-            @Override
-            public Void execute(Transaction tx) {
-                tx.run("MATCH (c:Contributor), (i:Item) " +
-                       "WHERE c.externalId = i.externalId " +
-                       "CREATE (c)-[:CONTRIBUTED_TO]->(i)");
-                logger.info("Created relationships between Contributors and Items based on external_id.");
-                return null;
-            }
-        });
-    }
+- The data model in Neo4j should align with the expected node labels and properties referenced in the Cypher queries.
 
-    private static void createSubjectToItemRelationships(Session session) {
-        session.writeTransaction(new TransactionWork<Void>() {
-            @Override
-            public Void execute(Transaction tx) {
-                tx.run("MATCH (s:Subject), (i:Item) " +
-                       "WHERE s.externalId = i.externalId " +
-                       "CREATE (s)-[:SUBJECT_OF]->(i)");
-                logger.info("Created relationships between Subjects and Items based on external_id.");
-                return null;
-            }
-        });
-    }
+- Error handling is centralized to catch exceptions during the session lifecycle and transaction execution.
 
-    public static void main(String[] args) {
-        createRelationships();
-        Neo4jConnection.close();
-    }
-}
+- The workflow assumes prior successful data export from PostgreSQL to Neo4j nodes.
 
-```
+## Conclusion
 
-### Build and Execute
+This project provides a focused, practical solution to a common problem in graph data workflows: establishing relationships post-node creation. It leverages Java and Neo4j's capabilities to automate relationship creation, enhancing the graph's semantic richness and query potential.
 
-```bash
-cd supreme-court-transfer
-mvn compile
-mvn exec:java -Dexec.mainClass="com.supreme_court_transfer.App"
-mvn exec:java -Dexec.mainClass="com.supreme_court_transfer.RelationshipCreator" 
-```
+For full context and data export steps, refer to the companion repository: https://github.com/justin-napolitano/supreme-court-transfer
