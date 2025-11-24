@@ -20,6 +20,13 @@ seoSecondaryKeywords:
   - postgresql to neo4j
   - graph data workflow
 seoOptimized: true
+topicFamily: automation
+topicFamilyConfidence: 0.9
+topicFamilyNotes: >-
+  The post focuses on automating the creation of relationships in a Neo4j graph database using a
+  Java workflow, which aligns with automation of data migration and scripting workflows involving
+  databases. The description and content emphasize automation of graph relationship creation after
+  PostgreSQL export, fitting best into the 'automation' family over others.
 ---
 
 # Postgres to Neo4j Workflow: Relationships
@@ -63,4 +70,5 @@ The `RelationshipCreator` Java class encapsulates the logic to create relationsh
 This project provides a focused, practical solution to a common problem in graph data workflows: establishing relationships post-node creation. It leverages Java and Neo4j's capabilities to automate relationship creation, enhancing the graph's semantic richness and query potential.
 
 For full context and data export steps, refer to the companion repository: https://github.com/justin-napolitano/supreme-court-transfer
+
 
