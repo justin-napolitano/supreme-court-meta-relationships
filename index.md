@@ -1,12 +1,26 @@
 ---
-slug: "github-supreme-court-meta-relationships"
-title: "supreme-court-meta-relationships"
-repo: "justin-napolitano/supreme-court-meta-relationships"
-githubUrl: "https://github.com/justin-napolitano/supreme-court-meta-relationships"
-generatedAt: "2025-11-23T09:42:06.710583Z"
-source: "github-auto"
+slug: github-supreme-court-meta-relationships
+title: Java Workflow for Creating Neo4j Relationships from PostgreSQL Nodes
+repo: justin-napolitano/supreme-court-meta-relationships
+githubUrl: https://github.com/justin-napolitano/supreme-court-meta-relationships
+generatedAt: '2025-11-23T09:42:06.710583Z'
+source: github-auto
+summary: >-
+  Demonstrates automated creation of node relationships in Neo4j using Java after migrating data
+  from PostgreSQL tables.
+tags:
+  - java
+  - neo4j
+  - postgresql
+  - data-migration
+  - graph-database
+seoPrimaryKeyword: neo4j relationships
+seoSecondaryKeywords:
+  - java neo4j
+  - postgresql to neo4j
+  - graph data workflow
+seoOptimized: true
 ---
-
 
 # Postgres to Neo4j Workflow: Relationships
 
@@ -49,3 +63,4 @@ The `RelationshipCreator` Java class encapsulates the logic to create relationsh
 This project provides a focused, practical solution to a common problem in graph data workflows: establishing relationships post-node creation. It leverages Java and Neo4j's capabilities to automate relationship creation, enhancing the graph's semantic richness and query potential.
 
 For full context and data export steps, refer to the companion repository: https://github.com/justin-napolitano/supreme-court-transfer
+
