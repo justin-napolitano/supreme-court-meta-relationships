@@ -1,20 +1,28 @@
 ---
 slug: github-supreme-court-meta-relationships
 id: github-supreme-court-meta-relationships
-title: supreme-court-meta-relationships
+title: Java Workflow for Neo4j Meta-Relationships Management
 repo: justin-napolitano/supreme-court-meta-relationships
 githubUrl: https://github.com/justin-napolitano/supreme-court-meta-relationships
 generatedAt: '2025-11-24T21:36:32.047Z'
 source: github-auto
 summary: >-
-  A Java-based workflow for creating and managing relationships between nodes in
-  a Neo4j graph database, leveraging metadata exported from PostgreSQL. This
-  project focuses on establishing standard meta-data relationships to enhance
-  the graph structure after node insertion.
-tags: []
-seoPrimaryKeyword: ''
-seoSecondaryKeywords: []
-seoOptimized: false
+  Explore a Java-based solution for managing node relationships in Neo4j using
+  PostgreSQL metadata.
+tags:
+  - java
+  - neo4j
+  - postgresql
+  - slf4j
+  - maven
+seoPrimaryKeyword: neo4j meta-relationships management
+seoSecondaryKeywords:
+  - java neo4j integration
+  - postgresql data export
+  - relationship automation
+  - graph database workflow
+  - java logging with slf4j
+seoOptimized: true
 topicFamily: null
 topicFamilyConfidence: null
 kind: project
