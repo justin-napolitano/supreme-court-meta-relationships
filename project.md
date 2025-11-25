@@ -6,9 +6,7 @@ repo: justin-napolitano/supreme-court-meta-relationships
 githubUrl: https://github.com/justin-napolitano/supreme-court-meta-relationships
 generatedAt: '2025-11-24T21:36:32.047Z'
 source: github-auto
-summary: >-
-  Explore a Java-based solution for managing node relationships in Neo4j using
-  PostgreSQL metadata.
+summary: Explore a Java-based solution for managing node relationships in Neo4j using PostgreSQL metadata.
 tags:
   - java
   - neo4j
@@ -23,8 +21,8 @@ seoSecondaryKeywords:
   - graph database workflow
   - java logging with slf4j
 seoOptimized: true
-topicFamily: null
-topicFamilyConfidence: null
+topicFamily: datascience
+topicFamilyConfidence: 0.8
 kind: project
 entryLayout: project
 showInProjects: true
@@ -110,4 +108,5 @@ java -cp target/your-jar-file.jar com.supreme_court_transfer.RelationshipCreator
 ---
 
 For more details, see the related repository for data transfer: [supreme-court-transfer](https://github.com/justin-napolitano/supreme-court-transfer).
+
 
