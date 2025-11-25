@@ -1,32 +1,38 @@
 ---
 slug: github-supreme-court-meta-relationships
-title: Java Workflow for Creating Neo4j Relationships from PostgreSQL Nodes
+title: 'Postgres to Neo4j: Automating Relationship Creation'
 repo: justin-napolitano/supreme-court-meta-relationships
 githubUrl: https://github.com/justin-napolitano/supreme-court-meta-relationships
 generatedAt: '2025-11-23T09:42:06.710583Z'
 source: github-auto
 summary: >-
-  Demonstrates automated creation of node relationships in Neo4j using Java after migrating data
-  from PostgreSQL tables.
+  Learn how to automate the creation of relationships in Neo4j after migrating
+  data from PostgreSQL using Java.
 tags:
   - java
   - neo4j
   - postgresql
   - data-migration
   - graph-database
-seoPrimaryKeyword: neo4j relationships
+  - cypher
+seoPrimaryKeyword: postgres to neo4j relationship automation
 seoSecondaryKeywords:
-  - java neo4j
-  - postgresql to neo4j
-  - graph data workflow
+  - neo4j relationship creation
+  - postgresql to neo4j migration
+  - java neo4j integration
+  - automating graph relationships
+  - data export to neo4j
 seoOptimized: true
 topicFamily: automation
 topicFamilyConfidence: 0.9
 topicFamilyNotes: >-
-  The post focuses on automating the creation of relationships in a Neo4j graph database using a
-  Java workflow, which aligns with automation of data migration and scripting workflows involving
-  databases. The description and content emphasize automation of graph relationship creation after
-  PostgreSQL export, fitting best into the 'automation' family over others.
+  The post focuses on automating the creation of relationships in a Neo4j graph
+  database using a Java workflow, which aligns with automation of data migration
+  and scripting workflows involving databases. The description and content
+  emphasize automation of graph relationship creation after PostgreSQL export,
+  fitting best into the 'automation' family over others.
+kind: project
+id: github-supreme-court-meta-relationships
 ---
 
 # Postgres to Neo4j Workflow: Relationships
